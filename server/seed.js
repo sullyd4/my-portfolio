@@ -7,16 +7,13 @@ dotenv.config();
 
 const seedUser = async () => {
   try {
-    // Corrected connection - options removed
     await mongoose.connect(process.env.MONGO_URI);
 
     console.log('MongoDB Connected...');
 
-    // --- IMPORTANT: Change these values to your desired credentials ---
-    const adminEmail = 'solomondaini@outlook.com';
-    const adminPassword = 'Fabregas4';
+    const adminEmail = 'admin@example.com';
+    const adminPassword = 'your-secure-password';
     const adminName = 'Solomon Daini';
-    // ----------------------------------------------------------------
 
     let user = await User.findOne({ email: adminEmail });
 
