@@ -1,57 +1,42 @@
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
-import projectCoaching from "@/assets/project-coaching.jpg";
-import projectEcommerce from "@/assets/project-ecommerce.jpg";
-import projectTaskManager from "@/assets/project-taskmanager.jpg";
-import { useEffect, useState } from "react";
+import projectClearlink from "@/assets/project-clearlink.jpg";
+import projectTodo from "@/assets/project-todo.jpg";
+import projectSsAutos from "@/assets/project-ss-autos.jpg";
 
 const Projects = () => {
-  const [projects, setProjects] = useState([]);
-
-    useEffect(() => {
-        const fetchProjects = async () => {
-            try {
-                // We will replace this with a fetch to our API later
-                const dummyProjects = [
-                    {
-                      title: "Empower – Coaching Platform",
-                      description: "A comprehensive coaching platform that connects trainers with clients, featuring progress tracking, workout planning, and nutrition guidance.",
-                      stack: "React + Firebase + Node.js",
-                      image: projectCoaching,
-                      liveUrl: "#",
-                      githubUrl: "#"
-                    },
-                    {
-                      title: "EcoShop – Sustainable Commerce",
-                      description: "An e-commerce platform focused on sustainable products, with smart recommendations and carbon footprint tracking for conscious consumers.",
-                      stack: "React + Express + MongoDB",
-                      image: projectEcommerce,
-                      liveUrl: "#",
-                      githubUrl: "#"
-                    },
-                    {
-                      title: "FlowTask – Project Management",
-                      description: "A minimalist project management tool designed for small teams, featuring kanban boards, time tracking, and collaborative workflows.",
-                      stack: "React + TypeScript + Firebase",
-                      image: projectTaskManager,
-                      liveUrl: "#",
-                      githubUrl: "#"
-                    }
-                  ];
-                setProjects(dummyProjects);
-            } catch (error) {
-                console.error("Error fetching projects:", error);
-            }
-        };
-
-        fetchProjects();
-    }, []);
+  const projects = [
+    {
+      title: "ClearLink Project",
+      description: "A comprehensive project demonstrating modern web development techniques and seamless user experience.",
+      stack: "React + Tailwind CSS",
+      image: projectClearlink,
+      liveUrl: "https://ornate-kitten-6261cc.netlify.app/",
+      githubUrl: "https://github.com/sullyd4/clearlink-project"
+    },
+    {
+      title: "To-Do App with Calendar",
+      description: "An intuitive task management application featuring a fully integrated calendar to help users organize their schedules.",
+      stack: "MERN Stack",
+      image: projectTodo,
+      liveUrl: "https://exquisite-dolphin-ab400e.netlify.app/",
+      githubUrl: "https://github.com/sullyd4/todo-app"
+    },
+    {
+      title: "S&S Autos Landing Page",
+      description: "A professional landing page for an automotive business, complete with user sign-in and sign-up functionality.",
+      stack: "React + CSS",
+      image: projectSsAutos,
+      liveUrl: "https://helpful-caramel-6cb159.netlify.app/",
+      githubUrl: "https://github.com/sullyd4/s-autos-frontend"
+    }
+  ];
 
   return (
-    <section className="py-20 px-6">
+    <section id="projects" className="py-20 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4">
             Projects
           </h2>
           <div className="w-20 h-1 bg-gradient-primary rounded-full mx-auto mb-6"></div>
@@ -59,25 +44,22 @@ const Projects = () => {
             A showcase of purposeful applications that solve real problems
           </p>
         </div>
-
+        
         <div className="space-y-12">
           {projects.map((project, index) => (
-            <div
+            <div 
               key={index}
-              className="bg-card rounded-2xl overflow-hidden shadow-soft hover-lift transition-smooth"
+              className="bg-card rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
             >
               <div className="grid lg:grid-cols-2 gap-0">
-                {/* Image */}
                 <div className="relative overflow-hidden">
-                  <img
-                    src={project.image}
+                  <img 
+                    src={project.image} 
                     alt={`${project.title} preview`}
                     className="w-full h-64 lg:h-80 object-cover transition-transform duration-300 hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent lg:hidden"></div>
                 </div>
-
-                {/* Content */}
+                
                 <div className="p-8 lg:p-12 flex flex-col justify-center">
                   <div className="space-y-6">
                     <div>
@@ -88,20 +70,24 @@ const Projects = () => {
                         {project.stack}
                       </div>
                     </div>
-
+                    
                     <p className="text-muted-foreground leading-relaxed text-lg">
                       {project.description}
                     </p>
-
+                    
                     <div className="flex gap-4 pt-4">
-                      <Button className="btn-primary">
-                        <ExternalLink className="mr-2 h-4 w-4" />
-                        View Live
-                      </Button>
-                      <Button variant="outline" className="btn-outline">
-                        <Github className="mr-2 h-4 w-4" />
-                        Code
-                      </Button>
+                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                        <Button className="btn-primary">
+                          <ExternalLink className="mr-2 h-4 w-4" />
+                          View Live
+                        </Button>
+                      </a>
+                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                        <Button variant="outline" className="btn-outline">
+                          <Github className="mr-2 h-4 w-4" />
+                          Code
+                        </Button>
+                      </a>
                     </div>
                   </div>
                 </div>

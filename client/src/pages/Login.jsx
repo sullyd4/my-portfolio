@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import api from '../services/api';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -42,15 +42,10 @@ const Login = () => {
                 <Label htmlFor="password">Password</Label>
                 <Input id="password" name="password" type="password" required onChange={onChange} />
               </div>
+              {/* This is the key change 👇 */}
               <Button type="submit" className="w-full">Login</Button>
             </div>
           </form>
-          <div className="mt-4 text-center text-sm">
-            Don't have an account?{" "}
-            <Link to="/register" className="underline">
-              Sign up
-            </Link>
-          </div>
         </CardContent>
       </Card>
     </div>

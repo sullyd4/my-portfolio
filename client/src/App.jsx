@@ -4,14 +4,21 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// Import Pages
+// Import Providers
+import { ContactFormProvider } from "./context/ContactFormContext";
+
+// Import Layouts and Pages
+import Layout from "./components/Layout";
+import CrmLayout from "./components/crm/CrmLayout";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import Register from "./pages/Register";
-import Login from "./pages/Login"; // We will create this next
-import Dashboard from "./pages/Dashboard"; // We will create this next
-
-// Import Routing Component
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import ProjectsPage from "./pages/ProjectsPage";
+import ProjectDetailPage from "./pages/ProjectDetailPage";
+import ContactsPage from "./pages/ContactsPage";
+import DealsPage from "./pages/DealsPage";
+import ContactDetailPage from "./pages/ContactDetailPage"; // Import the new page
 import PrivateRoute from "./components/routing/PrivateRoute";
 
 const queryClient = new QueryClient();
@@ -19,25 +26,35 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          {/* Public Routes */}
-          <Route path="/" element={<Index />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          
-          {/* Protected Routes */}
-          <Route element={<PrivateRoute />}>
-            <Route path="/dashboard" element={<Dashboard />} />
-            {/* Add other protected CRM routes here */}
-          </Route>
+      <ContactFormProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            {/* Public Routes with main header */}
+            <Route element={<Layout />}>
+              <Route path="/" element={<Index />} />
+              <Route path="/projects" element={<ProjectsPage />} />
+              <Route path="/project/:projectId" element={<ProjectDetailPage />} />
+            </Route>
 
-          {/* Catch-all Route */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+            {/* Auth Routes without any layout */}
+            <Route path="/login" element={<Login />} />
+            
+            {/* Protected CRM Routes with the CRM Layout */}
+            <Route element={<PrivateRoute />}>
+              <Route element={<CrmLayout />}>
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/contacts" element={<ContactsPage />} />
+                <Route path="/contacts/:contactId" element={<ContactDetailPage />} />
+                <Route path="/deals" element={<DealsPage />} />
+              </Route>
+            </Route>
+
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </ContactFormProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

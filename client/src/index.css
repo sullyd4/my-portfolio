@@ -6,9 +6,9 @@
 
 @layer base {
   :root {
-    /* Core palette */
+    /* Core palette - warm, professional, calming */
     --background: 0 0% 100%;
-    --foreground: 220 13% 18%;
+    --foreground: 220 13% 18%; /* Dark Charcoal instead of pure black */
     
     /* Surface colors */
     --card: 0 0% 100%;
@@ -16,15 +16,19 @@
     --muted: 220 13% 96%;
     --muted-foreground: 220 9% 46%;
     
-    /* Brand colors */
+    /* Brand colors - gentle blue for trust and calm */
     --primary: 217 89% 61%;
     --primary-foreground: 0 0% 100%;
     --primary-hover: 217 89% 55%;
     
-    /* Secondary colors */
+    /* Secondary - warm gray for balance */
     --secondary: 220 13% 91%;
     --secondary-foreground: 220 13% 18%;
     --secondary-hover: 220 13% 85%;
+    
+    /* Accent - darker blue for emphasis */
+    --accent: 220 100% 28%;
+    --accent-foreground: 0 0% 100%;
     
     /* Interactive states */
     --border: 220 13% 91%;
@@ -33,35 +37,23 @@
     
     /* Utilities */
     --radius: 0.75rem;
-
+    --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    
     /* Skill bar colors */
-    --skill-react: 199 89% 48%;
-    --skill-javascript: 45 93% 55%;
-    --skill-typescript: 211 60% 45%;
-    --skill-node: 120 40% 31%;
-    --skill-css: 204 86% 53%;
-    --skill-html: 12 76% 61%;
+    --skill-react: 220 89% 61%;
+    --skill-javascript: 54 89% 61%;
+    --skill-typescript: 205 89% 61%;
+    --skill-node: 145 63% 42%;
+    --skill-css: 265 89% 61%;
+    --skill-html: 25 89% 61%;
   }
 
   .dark {
-    /* Dark mode colors */
+    /* Dark mode colors can be refined here as well */
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    /* ... other dark mode variables */
   }
 }
 
