@@ -30,7 +30,7 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB Connected...'))
   .catch(err => console.log(err));
 
-// --- API Routes ---
+// API Routes
 app.use('/api/inquiry', inquiryRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/contacts', authMiddleware, contactRoutes);
@@ -38,7 +38,7 @@ app.use('/api/deals', authMiddleware, dealRoutes);
 app.use('/api/interactions', authMiddleware, interactionRoutes);
 
 // --- Serve Frontend ---
-const clientDistPath = path.join(__dirname, '../client/dist');
+const clientDistPath = path.resolve(__dirname, '../client/dist');
 app.use(express.static(clientDistPath));
 
 app.get('*', (req, res) => {
