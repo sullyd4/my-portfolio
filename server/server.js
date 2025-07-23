@@ -38,12 +38,9 @@ app.use('/api/deals', authMiddleware, dealRoutes);
 app.use('/api/interactions', authMiddleware, interactionRoutes);
 
 // --- Serve Frontend ---
-// This section should come AFTER your API routes
 const clientDistPath = path.join(__dirname, '../client/dist');
 app.use(express.static(clientDistPath));
 
-// The catch-all route: for any request that doesn't match one above,
-// send back React's index.html file.
 app.get('*', (req, res) => {
   res.sendFile(path.join(clientDistPath, 'index.html'));
 });
