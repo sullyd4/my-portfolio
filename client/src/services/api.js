@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-// The production URL will be set in Netlify's environment variables
-const API_URL = process.env.NODE_ENV === 'production'
-  ? 'https://your-backend-url.onrender.com/api' // We will get this URL from Render later
-  : 'http://localhost:5001/api';
+// The production URL is now set to your live Render service URL
+const API_URL = 'https://solomon-portfolio-backend.onrender.com/api';
 
 const api = axios.create({
   baseURL: API_URL,
